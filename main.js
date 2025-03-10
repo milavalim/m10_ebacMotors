@@ -6,8 +6,17 @@ $(document).ready(function(){
         $('nav').slideToggle();
     })
 
+    $('#nome').mask('')
+
     $('#telefone').mask('(00) 00000-0000', {
         placeholder: '(00) 12345-6789'
+    })
+
+    $('#email').mask('A', {
+        placeholder: 'seuemail@gmail.com',
+        translation: {
+            "A": { pattern: /[\w@\-.+]/, recursive: true }
+        }
     })
 
     $('form').validate({
@@ -33,13 +42,15 @@ $(document).ready(function(){
             nome: 'Por favor, insira o seu nome'
         },
         submitHandler: function(form){
-            console.log(form)
+            alert("Sua requisição foi enviada para análise, parabéns pela aquisição!");
+            form.reset();
         },
-        invalidHandler: function(evento, validador){
-            let camposIncorretos = validador.numberOfInvalidos();
+        invalidHandler: function (form, validator) {
+            let camposIncorretos = validator.numberOfInvalids();
             if(camposIncorretos){
-                alert(`Existem ${camposIncorretos} campos incorretos.`)
+                alert(`Por favor, confira: há ${camposIncorretos} campo(s) incorreto(s) ou não preenchido(s).`)
             }
+            form.reset();
         }
     })
 
