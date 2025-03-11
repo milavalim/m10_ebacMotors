@@ -6,8 +6,6 @@ $(document).ready(function(){
         $('nav').slideToggle();
     })
 
-    $('#nome').mask('')
-
     $('#telefone').mask('(00) 00000-0000', {
         placeholder: '(00) 12345-6789'
     })
@@ -50,7 +48,6 @@ $(document).ready(function(){
             if(camposIncorretos){
                 alert(`Por favor, confira: há ${camposIncorretos} campo(s) incorreto(s) ou não preenchido(s).`)
             }
-            form.reset();
         }
     })
 
